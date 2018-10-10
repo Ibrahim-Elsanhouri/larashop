@@ -85,13 +85,13 @@ class UserController extends Controller
     {
         //
         User::destroy($id); 
-        return redirect('/users')->with('msg' , 'User has been deleted Successfully ') ; 
+        return redirect('/admin/users')->with('msg' , 'User has been deleted Successfully ') ; 
     }
     public function enable($id){
 $user = User::find($id);
 $user->status = 1; 
 $user->save(); 
-return redirect('/users')->with('msg' , 'User has been Enabled Successfully ') ; 
+return redirect('/admin/users')->with('msg' , 'User has been Enabled Successfully ') ; 
 
 
     }
@@ -99,6 +99,6 @@ return redirect('/users')->with('msg' , 'User has been Enabled Successfully ') ;
         $user = User::find($id);
         $user->status = 0; 
         $user->save(); 
-        return redirect('/users')->with('msg' , 'User has been Disabled Successfully ') ; 
+        return redirect('/admin/users')->with('msg' , 'User has been Disabled Successfully ') ; 
     }
 }
