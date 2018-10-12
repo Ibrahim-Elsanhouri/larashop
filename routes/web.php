@@ -29,3 +29,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('user/profile' , 'front\UserProfileController@index')->name('users.profile');
 Route::get('user/order/{id}' , 'front\UserProfileController@show')->name('users.order');
+// Cart Routes
+Route::get('/cart' , 'front\CartController@index')->name('mycart')->middleware('auth'); 
+Route::post('/cart' , 'front\CartController@store')->name('cart.add')->middleware('auth'); 
+Route::get('/empty', function(){
+    Cart::instance('default')->destroy(); 
+});
+Route::delete('/cart/remove/{id}','front\CartController@remove')->name('cart.remove');
+Route::get('/cart/savelater/{id}' ,'front\CartController@savelater' )->name('cart.savelater'); 
+Route::delete('/saveLater/destroy/{id}','Front\SaveforlaterController@destroy')->name('savelater.destroy');
+Route::get('/cart/moveToCart/{id}','Front\SaveforlaterController@moveToCart')->name('moveToCart');

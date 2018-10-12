@@ -10,7 +10,16 @@
     <p class="display-4">&nbsp;</p>
     <a href="#" class="btn btn-warning btn-lg float-right">SHOP NOW!</a>
 </header>
-
+@if (session()->has('msg'))
+<div class="alert alert-success">
+{{ session()->get('msg')}}
+</div>
+@endif
+@if (session()->has('bugs'))
+<div class="alert alert-danger">
+{{ session()->get('bugs')}}
+</div>
+@endif
 <!-- Page Features -->
 <div class="row text-center">
 
@@ -25,8 +34,17 @@
             </div>
             <div class="card-footer"> 
                 <strong>${{$product->price}}</strong> &nbsp;
-                <a href="#" class="btn btn-primary btn-outline-dark"><i class="fa fa-cart-plus "></i> Add To
-                    Cart</a>
+
+<form action="{{ route('cart.add') }}" method="post">
+{{ csrf_field()}}
+<input name="id" type="hidden" value="{{$product->id}}"/> 
+<input name="name" type="hidden" value="{{$product->name}}"/> 
+<input name="price" type="hidden" value="{{ $product->price}}"/> 
+
+<button class="btn btn-primary btn-outline-dark"><i class="fa fa-cart-plus "></i> Add To
+                    Cart</button>
+</form>
+              
             </div>
         </div>
     </div>

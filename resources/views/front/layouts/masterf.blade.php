@@ -23,7 +23,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">LaraShop</a>
+        <a class="navbar-brand" href="/">LaraShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i> Cart <strong>(23)</strong>
+                    <a class="nav-link" href="{{ route('mycart')}}"><i class="fa fa-shopping-cart"></i> Cart <strong>
+                    
+{{ Cart::instance('default')->count() }}                    
+                    </strong>
                     </a>
                 </li>
                 @if(Auth::check() && Auth::user()->admin)
