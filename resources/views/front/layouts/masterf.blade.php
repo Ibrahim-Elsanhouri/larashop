@@ -17,7 +17,7 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="{{ URL::asset('css/heroic-features.css')}}" rel="stylesheet">
-
+@yield('style')
 </head>
 
 <body>
@@ -81,6 +81,8 @@
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{{ URL::asset('vendor/jquery/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+@yield('script')
 
 </body>
 
