@@ -14,13 +14,13 @@
 Route::get('/','front\HomeController@index');
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard','DashboardController@index')->middleware('auth');
-    Route::resource('/products', 'ProductController')->middleware('auth');;
-    Route::resource('/orders', 'OrderController')->middleware('auth');;
-    Route::resource('/users', 'UserController')->middleware('auth');;
-    Route::get('/orders/enable/{id}' ,'UserController@enable')->name('users.enable')->middleware('auth');;
-    Route::get('/orders/disable/{id}' ,'UserController@disable')->name('users.disable')->middleware('auth');;
-    Route::get('/orders/confirm/{id}' ,'OrderController@confirm')->name('orders.confirm')->middleware('auth');;
-    Route::get('/orders/pending/{id}' ,'OrderController@pending')->name('orders.pending')->middleware('auth');;
+    Route::resource('/products', 'ProductController')->middleware('auth');
+    Route::resource('/orders', 'OrderController')->middleware('auth');
+    Route::resource('/users', 'UserController')->middleware('auth');
+    Route::get('/orders/enable/{id}' ,'UserController@enable')->name('users.enable')->middleware('auth');
+    Route::get('/orders/disable/{id}' ,'UserController@disable')->name('users.disable')->middleware('auth');
+    Route::get('/orders/confirm/{id}' ,'OrderController@confirm')->name('orders.confirm')->middleware('auth');
+    Route::get('/orders/pending/{id}' ,'OrderController@pending')->name('orders.pending')->middleware('auth');
     });
 
 Auth::routes();
@@ -41,3 +41,4 @@ Route::delete('/saveLater/destroy/{id}','front\SaveforlaterController@destroy')-
 Route::get('/cart/moveToCart/{id}','front\SaveforlaterController@moveToCart')->name('moveToCart');
 Route::get('/checkout','front\CheckoutController@index'); 
 Route::post('/checkouts','front\CheckoutController@store')->name('checkouts'); 
+Route::put('/cart/update/{id}' , 'front\CartController@update')->name('cart.update');

@@ -32,7 +32,7 @@
                             <td>
                                 <strong>{{$item->model->name}}</strong><br>{{$item->model->details}}
                             </td>
-                            
+                            <td> {{$item->qty}} </td>
                             <td>
         
         <form method="post" action="{{ route('cart.remove', $item->rowId) }}" >
@@ -40,19 +40,31 @@
         {{ method_field('DELETE') }}
         <button class="btn btn-danger">Remove</button>
         </form>
+
                                <br>
                                <a href="{{ route('cart.savelater' , $item->rowId) }}" class="btn btn-primary">Save for Later</a>
 
                             </td>
-                            
+
+                                                        <td>${{$item->model->price}}</td>
+
+                         
                             <td>
-                                <select name="" id="" class="form-control" style="width: 4.7em">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
+                            <form method="post" action="{{ route('cart.update' , $item->rowId)  }}">
+                            {{ csrf_field()}}
+        {{ method_field('PUT') }}
+                            <select name="qty"  class="form-control" style="width: 4.7em">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
-                            </td>
-                            
-                            <td>${{$item->model->price}}</td>
+        <button type="submit" class="btn btn-success">Update Quantity</a>
+        
+        </form>
+        </td>
+
                         </tr>
 @endforeach
                 
@@ -144,3 +156,4 @@
         </div>
 <!-- /.container -->
 @endsection
+

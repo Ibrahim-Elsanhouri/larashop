@@ -43,4 +43,9 @@ return redirect()->back()->with('msg','Item has been removed');
         return redirect()->back()->with('msg','Item  has been  Saved For Later');
 
     }
+    public function update(Request $request , $id){
+//Cart::update($id , $request->quantity ); 
+Cart::update($id , $request->qty ); 
+return redirect('/cart')->with('msg','Quantity has been Updated Succesffuly');
+    }
 }
